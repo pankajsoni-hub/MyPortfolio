@@ -285,19 +285,16 @@ export const testimonial: TestimonialSection = {
   imageSrc: testimonialImage,
   testimonials: [
     {
-      name: 'John Doe',
-      text: 'Use this as an opportunity to promote what it is like to work with you. High value testimonials include ones from current or past co-workers, managers, or from happy clients.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg',
+      name: 'My Manager',
+      text: 'An exceptional developer who not only excels in managing multiple projects simultaneously but also thrives in an independent work environment, demonstrating remarkable problem-solving skills, time management, and a proactive approach to delivering high-quality results. Their ability to handle diverse projects and take full ownership of their tasks makes them a key asset to any team.',
     },
     {
-      name: 'Jane Doe',
-      text: 'Here you should write some nice things that someone has said about you. Encourage them to be specific and include important details (notes about a project you were on together, impressive quality produced, etc).',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
+      name: 'Client',
+      text: 'We are incredibly impressed with the developers ability to handle multiple projects independently while maintaining a high level of professionalism and quality. Their dedication and expertise have significantly contributed to the success of our projects, and we truly value their exceptional work ethic and commitment',
     },
     {
-      name: 'Someone else',
-      text: 'Add several of these, and keep them as fresh as possible, but be sure to focus on quality testimonials with strong highlights of your skills/work ethic.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
+      name: 'CEO',
+      text: 'This developer has consistently exceeded our expectations by efficiently managing several projects simultaneously, all while delivering outstanding results. Their proactive approach and ability to work autonomously have been invaluable to us, and we deeply appreciate their hard work and dedication.',
     },
   ],
 };
