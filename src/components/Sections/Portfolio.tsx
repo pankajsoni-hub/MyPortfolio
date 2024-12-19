@@ -1,11 +1,11 @@
 import {ArrowTopRightOnSquareIcon} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 import Image from 'next/image';
-import {FC, memo, MouseEvent, useCallback, useEffect, useRef, useState} from 'react';
+import { FC, memo, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 
-import {isMobile} from '../../config';
-import {portfolioItems, SectionId} from '../../data/data';
-import {PortfolioItem} from '../../data/dataDef';
+import { isMobile } from '../../config';
+import { portfolioItems, SectionId } from '../../data/data';
+import { PortfolioItem } from '../../data/dataDef';
 import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
 import Section from '../Layout/Section';
 
@@ -14,9 +14,10 @@ const Portfolio: FC = memo(() => {
     <Section className="bg-neutral-800" sectionId={SectionId.Portfolio}>
       <div className="flex flex-col gap-y-8">
         <h2 className="self-center text-xl font-bold text-white">Check out some of my work</h2>
-        <div className=" w-full columns-2 md:columns-3 lg:columns-4">
+        {/* Use CSS Grid for proper layout */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {portfolioItems.map((item, index) => {
-            const {title, image} = item;
+            const { title, image } = item;
             return (
               <div className="pb-6" key={`${title}-${index}`}>
                 <div
@@ -38,7 +39,7 @@ const Portfolio: FC = memo(() => {
 Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
-const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, description}}) => {
+const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { url, title, description } }) => {
   const [mobile, setMobile] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const linkRef = useRef<HTMLAnchorElement>(null);
@@ -64,8 +65,8 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, descrip
   return (
     <a
       className={classNames(
-        'absolute inset-0 h-full w-full  bg-gray-900 transition-all duration-300',
-        {'opacity-0 hover:opacity-80': !mobile},
+        'absolute inset-0 h-full w-full bg-gray-900 transition-all duration-300',
+        { 'opacity-0 hover:opacity-80': !mobile },
         showOverlay ? 'opacity-80' : 'opacity-0',
       )}
       href={url}
