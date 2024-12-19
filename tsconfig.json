@@ -23,7 +23,8 @@
     "incremental": true
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*",
+     "./backend/**/*"
   ],
   "exclude": [
     "node_modules"
