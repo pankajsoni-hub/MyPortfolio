@@ -205,7 +205,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     title: 'Portfolio Website',
     description: 'Using Mern, Next, and TypeScript, develop a portfolio website and add a contact email feature that allows anyone to get in touch with me when a recruiter or other individual fills out this form  and got mail on my mail id.',
-    url: 'https://reactresume.com',
+    url: 'https://my-portfolio-gray-zeta-14.vercel.app/',
     image: porfolioImage6,
   },
 ];
