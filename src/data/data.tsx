@@ -16,8 +16,6 @@ import porfolioImage2 from '../images/portfolio/project2.png';
 import porfolioImage4 from '../images/portfolio/project3.png';
 import porfolioImage5 from '../images/portfolio/project4.png';
 import porfolioImage6 from '../images/portfolio/project5.png';
-import porfolioImage7 from '../images/portfolio/portfolio-7.jpg';
-import porfolioImage8 from '../images/portfolio/portfolio-8.jpg';
 import profilepic from '../images/profile.jpg';
 import testimonialImage from '../images/testimonial.webp';
 import {
@@ -237,6 +235,16 @@ export const education: TimelineItem[] = [
 ];
 
 export const experience: TimelineItem[] = [
+  {
+    date: 'november 2024 to december 2024',
+    location: 'Metageeks Technologies , Noida',
+    title: 'Full Stack Web Developer',
+    content: (
+      <p>
+       Working as a full stack developer in Mern Technology
+      </p>
+    ),
+  },
   {
     date: 'July 2022 - October 2024',
     location: 'Sigma InfoSolutions Ltd,Jodhpur',

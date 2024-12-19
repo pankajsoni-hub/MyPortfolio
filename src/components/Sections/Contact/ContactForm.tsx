@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useState } from 'react';
+import {FC, memo, useCallback, useState} from 'react';
 
 interface FormData {
   name: string;
@@ -7,15 +7,12 @@ interface FormData {
 }
 
 const ContactForm: FC = memo(() => {
-  const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState<FormData>({name: '', email: '', message: ''});
 
-  const handleChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-      const { name, value } = event.target;
-      setFormData((prevData) => ({ ...prevData, [name]: value }));
-    },
-    [],
-  );
+  const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+    const {name, value} = event.target;
+    setFormData(prevData => ({...prevData, [name]: value}));
+  }, []);
 
   const handleSubmit = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
@@ -26,7 +23,7 @@ const ContactForm: FC = memo(() => {
         // Replace this with your API logic for form submission
         const response = await fetch('http://localhost:5000/api/contact', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {'Content-Type': 'application/json'},
           body: JSON.stringify(formData),
         });
 
@@ -35,7 +32,7 @@ const ContactForm: FC = memo(() => {
         }
 
         alert('Message sent successfully!');
-        setFormData({ name: '', email: '', message: '' }); // Reset form after submission
+        setFormData({name: '', email: '', message: ''}); // Reset form after submission
       } catch (error) {
         console.error('Error sending message:', error);
         alert('An error occurred while sending your message. Please try again later.');
