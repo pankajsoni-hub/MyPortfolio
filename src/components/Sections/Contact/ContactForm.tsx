@@ -20,13 +20,12 @@ const ContactForm: FC = memo(() => {
       event.preventDefault();
 
       try {
-        const response = await axios.post('/api/contact', formData, {
+        console.log('Form data to send:', formData);
+
+        // Replace this with your API logic for form submission
+        const response = await axios.post('https://my-portfolio-gray-zeta-14.vercel.app/api/contact', formData, {
           headers: {'Content-Type': 'application/json'},
         });
-
-        if (response.status !== 200) {
-          throw new Error(response.data.message || 'Unexpected error occurred.');
-        }
 
         alert('Message sent successfully!');
         setFormData({name: '', email: '', message: ''}); // Reset form after submission
