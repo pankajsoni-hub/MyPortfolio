@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {FC, memo, useCallback, useState} from 'react';
 
 interface FormData {
@@ -20,14 +21,12 @@ const ContactForm: FC = memo(() => {
 
       try {
         console.log('Form data to send:', formData);
-        // Replace this with your API logic for form submission
-        const response = await fetch('https://my-portfolio-gray-zeta-14.vercel.app/api/contact', {
-          method: 'POST',
+        // Axios POST request for form submission
+        const response = await axios.post('https://my-portfolio-gray-zeta-14.vercel.app/api/contact', formData, {
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(formData),
         });
 
-        if (!response.ok) {
+        if (response.status !== 200) {
           throw new Error('Failed to send the message.');
         }
 
