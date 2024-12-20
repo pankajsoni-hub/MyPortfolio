@@ -1,9 +1,9 @@
-import {VercelRequest, VercelResponse} from '@vercel/node';
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import express, {Request, Response} from 'express';
-import nodemailer from 'nodemailer';
+import {VercelRequest, VercelResponse} from "@vercel/node";
+import bodyParser from "body-parser";
+import cors from "cors";
+import dotenv from "dotenv";
+import express, {Request, Response} from "express";
+import nodemailer from "nodemailer";
 
 // Load environment variables
 dotenv.config();
@@ -16,7 +16,7 @@ app.use(cors());
 
 // Email transporter setup
 const transporter = nodemailer.createTransport({
-  service: 'Gmail',
+  service: "Gmail",
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
@@ -31,36 +31,51 @@ interface ContactFormData {
 }
 
 // POST endpoint to handle contact form submission
-app.post('/api/contact', async (req: Request<{}, {}, ContactFormData>, res: Response): Promise<void> => {
-  const {name, email, message} = req.body;
+app.post(
+  "/api/contact",
+  async (
+    req: Request<{}, {}, ContactFormData>,
+    res: Response
+  ): Promise<void> => {
+    const {name, email, message} = req.body;
 
-  // Validation
-  if (!name || !email || !message) {
-    res.status(400).json({success: false, message: 'All fields are required'});
-    return;
-  }
+    console.log("Received request:", {name, email, message});
 
-  try {
-    // Sending email
-    await transporter.sendMail({
-      from: `${name} <${email}>`,
-      to: process.env.RECEIVER_EMAIL,
-      subject: `New Contact Form Submission from ${name}`,
-      html: `
+    // Validation
+    if (!name || !email || !message) {
+      console.error("Validation failed: Missing fields");
+      res
+        .status(400)
+        .json({success: false, message: "All fields are required"});
+      return;
+    }
+
+    try {
+      await transporter.sendMail({
+        from: `${name} <${email}>`,
+        to: process.env.RECEIVER_EMAIL,
+        subject: `New Contact Form Submission from ${name}`,
+        html: `
         <h1>Contact Form Submission</h1>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
-    });
+      });
 
-    res.status(200).json({success: true, message: 'Message sent successfully'});
-  } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({success: false, message: 'Failed to send the message'});
+      console.log("Email sent successfully");
+      res
+        .status(200)
+        .json({success: true, message: "Message sent successfully"});
+    } catch (error) {
+      console.error("Error sending email:", error);
+      res
+        .status(500)
+        .json({success: false, message: "Failed to send the message"});
+    }
   }
-});
+);
 
 // Export the handler function for Vercel
 export default (req: VercelRequest, res: VercelResponse) => {

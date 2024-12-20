@@ -20,21 +20,19 @@ const ContactForm: FC = memo(() => {
       event.preventDefault();
 
       try {
-        console.log('Form data to send:', formData);
-        // Axios POST request for form submission
-        const response = await axios.post('https://my-portfolio-gray-zeta-14.vercel.app/api/contact', formData, {
+        const response = await axios.post('/api/contact', formData, {
           headers: {'Content-Type': 'application/json'},
         });
 
         if (response.status !== 200) {
-          throw new Error('Failed to send the message.');
+          throw new Error(response.data.message || 'Unexpected error occurred.');
         }
 
         alert('Message sent successfully!');
         setFormData({name: '', email: '', message: ''}); // Reset form after submission
-      } catch (error) {
-        console.error('Error sending message:', error);
-        alert('An error occurred while sending your message. Please try again later.');
+      } catch (error: any) {
+        console.error('Error details:', error.response || error.message);
+        alert(`Error: ${error.response?.data?.message || 'Failed to send your message. Please try again later.'}`);
       }
     },
     [formData],
