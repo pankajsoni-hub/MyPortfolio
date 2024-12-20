@@ -25,25 +25,28 @@ app.use(body_parser_1.default.json());
 app.use((0, cors_1.default)());
 // Email transporter setup
 const transporter = nodemailer_1.default.createTransport({
-    service: 'Gmail',
+    service: "Gmail",
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: "psoni96640@gmail.com",
+        pass: "ynor fmhw hgib wwxm",
     },
 });
 // POST endpoint to handle contact form submission
-app.post('/api/contact', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.post("/api/contact", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, email, message } = req.body;
+    console.log("Received request:", { name, email, message });
     // Validation
     if (!name || !email || !message) {
-        res.status(400).json({ success: false, message: 'All fields are required' });
+        console.error("Validation failed: Missing fields");
+        res
+            .status(400)
+            .json({ success: false, message: "All fields are required" });
         return;
     }
     try {
-        // Sending email
         yield transporter.sendMail({
             from: `${name} <${email}>`,
-            to: process.env.RECEIVER_EMAIL,
+            to: "psoni96640@gmail.com",
             subject: `New Contact Form Submission from ${name}`,
             html: `
         <h1>Contact Form Submission</h1>
@@ -53,11 +56,16 @@ app.post('/api/contact', (req, res) => __awaiter(void 0, void 0, void 0, functio
         <p>${message}</p>
       `,
         });
-        res.status(200).json({ success: true, message: 'Message sent successfully' });
+        console.log("Email sent successfully");
+        res
+            .status(200)
+            .json({ success: true, message: "Message sent successfully" });
     }
     catch (error) {
-        console.error('Error sending email:', error);
-        res.status(500).json({ success: false, message: 'Failed to send the message' });
+        console.error("Error sending email:", error);
+        res
+            .status(500)
+            .json({ success: false, message: "Failed to send the message" });
     }
 }));
 // Export the handler function for Vercel
