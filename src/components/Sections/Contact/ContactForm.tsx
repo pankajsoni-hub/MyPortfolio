@@ -22,16 +22,31 @@ const ContactForm: FC = memo(() => {
       try {
         console.log('Form data to send:', formData);
 
-        // Replace this with your API logic for form submission
         const response = await axios.post('https://my-portfolio-gray-zeta-14.vercel.app/api/contact', formData, {
           headers: {'Content-Type': 'application/json'},
         });
 
-        alert('Message sent successfully!');
-        setFormData({name: '', email: '', message: ''}); // Reset form after submission
-      } catch (error) {
-        console.error('Error sending message:', error);
-        alert('An error occurred while sending your message. Please try again later.');
+        if (response.status === 200) {
+          alert('Message sent successfully!');
+          setFormData({name: '', email: '', message: ''}); // Reset form after submission
+        } else {
+          throw new Error(`Unexpected response status: ${response.status}`);
+        }
+      } catch (error: unknown) {
+        // Check if the error is an AxiosError
+        if (axios.isAxiosError(error)) {
+          console.error('Error sending message:', error);
+          const status = error.response?.status;
+          alert(
+            `An error occurred while sending your message. ${
+              status ? `Server responded with status ${status}.` : 'Please try again later.'
+            }`,
+          );
+        } else {
+          // Handle non-Axios errors
+          console.error('Unexpected error:', error);
+          alert('An unexpected error occurred. Please try again later.');
+        }
       }
     },
     [formData],
