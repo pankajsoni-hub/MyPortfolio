@@ -30,9 +30,9 @@ const ContactForm: FC = memo(() => {
 
         alert('Message sent successfully!');
         setFormData({name: '', email: '', message: ''}); // Reset form after submission
-      } catch (error: any) {
-        console.error('Error details:', error.response || error.message);
-        alert(`Error: ${error.response?.data?.message || 'Failed to send your message. Please try again later.'}`);
+      } catch (error) {
+        console.error('Error sending message:', error);
+        alert('An error occurred while sending your message. Please try again later.');
       }
     },
     [formData],
