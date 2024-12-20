@@ -11,7 +11,7 @@
       }
     ],
     "routes": [
-      { "src": "/(.*)", "dest": "backend/src/$1" },
+      { "src": "/(.*)", "dest": "backend/$1" },
       { "src": "/(.*)", "dest": "/$1" }
     ]
   }
