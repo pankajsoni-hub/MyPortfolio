@@ -11,8 +11,7 @@ import {
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import heroImage from '../images/header-background.webp';
-import porfolioImage1 from '../images/portfolio/project1.png';
-import porfolioImage2 from '../images/portfolio/project2.png';
+import porfolioImage1 from '../images/portfolio/project1.jpg';
 import porfolioImage4 from '../images/portfolio/project3.png';
 import porfolioImage5 from '../images/portfolio/project4.png';
 import porfolioImage6 from '../images/portfolio/project5.png';
@@ -175,20 +174,20 @@ export const portfolioItems: PortfolioItem[] = [
   {
     title: 'MCA Loan Origination System',
     description: 'In this project loan origination system efficiently manage loan application covering everything from customer onboarding and document verification to credit assessment and loan disbursement in this project it give only small business cash advance loan for short term in this project I used react javascript golang html css and aws for hosting',
-    url: 'https://loc.demo.kendra.lendfoundry.com/v1/backoffice/login',
+    url: '',
     image: porfolioImage1,
   },
   {
     title: 'MCA Loan Origination System',
     description: 'In this project I used react javascript golang and html css redux technology. This project give only loan like roofing,home essentials repairing and shop repair etc .In this project loan origination system efficiently manage loan application covering everything from customer onboarding and document verification to credit  assessment and loan disbursement.and ',
-    url: 'https://loc.demo.kendra.lendfoundry.com/v1/backoffice/login',
+    url: '',
     image: porfolioImage1,
   },
   {
     title: 'Line Of Credit Loan origination System',
     description: 'A line of credit is a flexible loan option that allows borrower to access funds up to predetermined limit unlike a traditional loan where you receive a lump sum ,line of credit let you withdraw as needed up to that limit. I used react javascript golang html css and redux technology to build and manage this project ',
-    url: 'https://loc.demo.kendra.lendfoundry.com/v1/backoffice/login',
-    image: porfolioImage2,
+    url: '',
+    image: porfolioImage1,
   },
   {
     title: 'Finance Digest Blog App',
