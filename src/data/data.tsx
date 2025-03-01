@@ -235,8 +235,8 @@ export const education: TimelineItem[] = [
 
 export const experience: TimelineItem[] = [
   {
-    date: 'november 2024 to december 2024',
-    location: 'Metageeks Technologies , Noida',
+    date: '1 january 2025 and currently working here',
+    location: 'Altaneofin',
     title: 'Full Stack Web Developer',
     content: (
       <p>
@@ -245,7 +245,7 @@ export const experience: TimelineItem[] = [
     ),
   },
   {
-    date: 'July 2022 - October 2024',
+    date: 'July 2022 join',
     location: 'Sigma InfoSolutions Ltd,Jodhpur',
     title: 'Associate Software Engineer ',
     content: (
