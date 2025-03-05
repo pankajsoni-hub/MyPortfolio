@@ -156,6 +156,10 @@ export const skills: SkillGroup[] = [
     name: 'DataBase',
     skills: [
       {
+        name: 'Redux',
+        level: 8,
+      },
+      {
         name: 'Mongodb',
         level: 8,
       },
